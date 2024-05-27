@@ -1,0 +1,22 @@
+
+sequenceDiagram
+    participant M as Main
+    participant R as REPL
+    participant P as Parser
+    participant E as Evaluator
+    participant Env as Environment
+    participant Err as Errors
+    M->>R: start()
+    R->>R: display_prompt()
+    R->>P: parse(input)
+    P-->>R: return AST
+    R->>Env: create_global_env()
+    R->>E: evaluate(AST, Env)
+    E-->>R: return result
+    R->>R: print(result)
+    R->>R: loop()
+    Note over R, P, E, Env: Error Handling
+    R->>Err: catch(SyntaxError)
+    R->>Err: catch(NameError)
+    R->>Err: catch(ArityError)
+    Err-->>R: display_error_message()

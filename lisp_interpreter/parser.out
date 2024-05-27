@@ -1,0 +1,125 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> expression
+Rule 1     expression -> NUMBER
+Rule 2     expression -> SYMBOL
+Rule 3     expression -> LPAREN list RPAREN
+Rule 4     list -> <empty>
+Rule 5     list -> expression list
+
+Terminals, with rules where they appear
+
+LPAREN               : 3
+NUMBER               : 1
+RPAREN               : 3
+SYMBOL               : 2
+error                : 
+
+Nonterminals, with rules where they appear
+
+expression           : 5 0
+list                 : 3 5
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expression
+    (1) expression -> . NUMBER
+    (2) expression -> . SYMBOL
+    (3) expression -> . LPAREN list RPAREN
+
+    NUMBER          shift and go to state 2
+    SYMBOL          shift and go to state 3
+    LPAREN          shift and go to state 4
+
+    expression                     shift and go to state 1
+
+state 1
+
+    (0) S' -> expression .
+
+
+
+state 2
+
+    (1) expression -> NUMBER .
+
+    $end            reduce using rule 1 (expression -> NUMBER .)
+    NUMBER          reduce using rule 1 (expression -> NUMBER .)
+    SYMBOL          reduce using rule 1 (expression -> NUMBER .)
+    LPAREN          reduce using rule 1 (expression -> NUMBER .)
+    RPAREN          reduce using rule 1 (expression -> NUMBER .)
+
+
+state 3
+
+    (2) expression -> SYMBOL .
+
+    $end            reduce using rule 2 (expression -> SYMBOL .)
+    NUMBER          reduce using rule 2 (expression -> SYMBOL .)
+    SYMBOL          reduce using rule 2 (expression -> SYMBOL .)
+    LPAREN          reduce using rule 2 (expression -> SYMBOL .)
+    RPAREN          reduce using rule 2 (expression -> SYMBOL .)
+
+
+state 4
+
+    (3) expression -> LPAREN . list RPAREN
+    (4) list -> .
+    (5) list -> . expression list
+    (1) expression -> . NUMBER
+    (2) expression -> . SYMBOL
+    (3) expression -> . LPAREN list RPAREN
+
+    RPAREN          reduce using rule 4 (list -> .)
+    NUMBER          shift and go to state 2
+    SYMBOL          shift and go to state 3
+    LPAREN          shift and go to state 4
+
+    list                           shift and go to state 5
+    expression                     shift and go to state 6
+
+state 5
+
+    (3) expression -> LPAREN list . RPAREN
+
+    RPAREN          shift and go to state 7
+
+
+state 6
+
+    (5) list -> expression . list
+    (4) list -> .
+    (5) list -> . expression list
+    (1) expression -> . NUMBER
+    (2) expression -> . SYMBOL
+    (3) expression -> . LPAREN list RPAREN
+
+    RPAREN          reduce using rule 4 (list -> .)
+    NUMBER          shift and go to state 2
+    SYMBOL          shift and go to state 3
+    LPAREN          shift and go to state 4
+
+    expression                     shift and go to state 6
+    list                           shift and go to state 8
+
+state 7
+
+    (3) expression -> LPAREN list RPAREN .
+
+    $end            reduce using rule 3 (expression -> LPAREN list RPAREN .)
+    NUMBER          reduce using rule 3 (expression -> LPAREN list RPAREN .)
+    SYMBOL          reduce using rule 3 (expression -> LPAREN list RPAREN .)
+    LPAREN          reduce using rule 3 (expression -> LPAREN list RPAREN .)
+    RPAREN          reduce using rule 3 (expression -> LPAREN list RPAREN .)
+
+
+state 8
+
+    (5) list -> expression list .
+
+    RPAREN          reduce using rule 5 (list -> expression list .)
+

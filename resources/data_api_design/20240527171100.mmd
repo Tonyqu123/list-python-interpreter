@@ -1,0 +1,34 @@
+
+classDiagram
+    class Parser {
+        +parse(code: str) AST
+    }
+    class Evaluator {
+        +evaluate(ast: AST, env: Environment) Any
+    }
+    class Environment {
+        -parent: Environment
+        -variables: dict
+        +define(var: str, value: Any)
+        +lookup(var: str) Any
+        +set(var: str, value: Any)
+    }
+    class REPL {
+        +start()
+    }
+    class Errors {
+        +LispError(msg: str)
+        +SyntaxError(msg: str)
+        +NameError(msg: str)
+        +ArityError(msg: str)
+    }
+    Parser --> AST
+    Evaluator --> AST
+    Evaluator --> Environment
+    REPL --> Parser
+    REPL --> Evaluator
+    REPL --> Environment
+    Errors <|-- LispError
+    Errors <|-- SyntaxError
+    Errors <|-- NameError
+    Errors <|-- ArityError

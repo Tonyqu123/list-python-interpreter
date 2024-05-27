@@ -1,0 +1,56 @@
+
+Prompt for Writing a Lisp Interpreter in Python
+
+Task: Create a comprehensive Lisp interpreter using Python.
+
+Goal: Develop a Lisp interpreter capable of executing most Lisp functionalities, such as defining and invoking functions, managing variables, handling basic data types (lists, numbers, symbols), and implementing essential Lisp operations (like quote, if, define, lambda, and arithmetic operations).
+
+Details:
+
+	1.	Environment Setup:
+	•	Use Python 3.x for this task.
+	•	Include necessary Python libraries for handling data structures and parsing.
+	2.	Core Features:
+	•	Basic Data Types: Support numbers, symbols, and lists.
+	•	Environment Handling: Implement an environment to store variable bindings.
+	•	Function Definitions: Allow the definition and invocation of functions.
+	•	Lisp Expressions: Handle core Lisp expressions (quote, if, define, lambda, etc.).
+	3.	Implementation Steps:
+	•	Parser: Create a parser to convert Lisp code (input as a string) into an internal data structure (abstract syntax tree).
+	•	Evaluator: Implement an evaluator to process the parsed data structures according to Lisp semantics.
+	•	Environment Management: Develop a mechanism to manage variable scopes and bindings.
+	•	REPL (Read-Eval-Print Loop): Optional but recommended, implement a REPL for interactive execution of Lisp code.
+	4.	Example Usage:
+	•	Variable Definition: (define x 10)
+	•	Function Definition: (define (square x) (* x x))
+	•	Function Invocation: (square 5) should return 25.
+	5.	Error Handling:
+	•	Implement basic error handling for undefined variables, function arity mismatches, and invalid syntax.
+	6.	Testing:
+	•	Include test cases for each core feature to ensure the interpreter works correctly.
+	•	Examples: arithmetic operations, function definitions and calls, conditional expressions.
+
+Output:
+
+	•	Provide the full Python code for the Lisp interpreter.
+	•	Include comments and documentation for key sections of the code.
+	•	Demonstrate the interpreter with example Lisp code snippets and their outputs.
+
+Explanation
+
+Parser:
+
+	•	This component will convert the Lisp code into a data structure that the interpreter can process. Typically, this involves tokenizing the input string and parsing it into a tree-like structure.
+
+Evaluator:
+
+	•	The evaluator will take the parsed data structure and execute it according to Lisp rules. This includes evaluating expressions, managing function calls, and handling variables.
+
+Environment Management:
+
+	•	Implementing a scoped environment is crucial for variable and function definitions. It will manage different layers of variable scopes and their bindings.
+
+Example Usage and Testing:
+
+	•	Providing clear examples of how to define variables and functions, and how to call them, helps ensure that the interpreter handles these basic Lisp features. Testing with various scenarios ensures robustness.
+
